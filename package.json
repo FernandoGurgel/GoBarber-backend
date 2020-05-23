@@ -1,7 +1,11 @@
 {
   "name": "GoBarber",
   "version": "1.0.0",
-  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev:server": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+  },
   "repository": "git@github.com:FernandoGurgel/GoBarber.git",
   "author": "Fernando Gurgel <fag.gurgel@gmail.com>",
   "license": "MIT",
@@ -22,6 +26,8 @@
   },
   "dependencies": {
     "date-fns": "^2.14.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pg": "^8.2.1",
+    "typeorm": "^0.2.25"
   }
 }
