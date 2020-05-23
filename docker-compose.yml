@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:9.6
+    restart: always
+    container_name: gostack-postgres
+    environment:
+     - "POSTGRES_PASSWORD=fg2020"
+     - "POSTGRES_DB=projetos"
+    ports:
+      - 5432:5432
