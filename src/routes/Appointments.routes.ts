@@ -4,8 +4,11 @@ import { getCustomRepository } from 'typeorm'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
 import CreateAppointmentsService from '../services/CreateAppointmentsService'
 import DeleteAppointmentService from '../services/DeleteAppointmentServices'
+import ensureAuthenticated from '../middlewares/ensureAuthenticated'
 
 const appointmentsRoutes = Router()
+
+appointmentsRoutes.use(ensureAuthenticated)
 
 appointmentsRoutes.post('/', async (request, response) => {
   try {
@@ -23,6 +26,8 @@ appointmentsRoutes.post('/', async (request, response) => {
 })
 
 appointmentsRoutes.get('/', async (request, response) => {
+  console.log(request.user)
+
   const appointmentsRepository = getCustomRepository(AppointmentsRepository)
   const appointments = await appointmentsRepository.find({
     where: { int_excluded: false },
