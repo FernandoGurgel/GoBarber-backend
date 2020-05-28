@@ -4,14 +4,14 @@ import { startOfHour } from 'date-fns'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
 
 interface AppointmentDTO {
-  provider: string
+  provider_id: string
   date: Date
 }
 
 class CreateAppointmentsService {
   public async execute({
     date,
-    provider,
+    provider_id,
   }: AppointmentDTO): Promise<Appointment> {
     const parsedDate = startOfHour(date)
     const appointmentsRepository = getCustomRepository(AppointmentsRepository)
@@ -25,7 +25,7 @@ class CreateAppointmentsService {
     }
 
     const appointment = appointmentsRepository.create({
-      provider,
+      provider_id,
       date: parsedDate,
     })
 
