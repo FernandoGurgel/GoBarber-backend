@@ -1,6 +1,7 @@
 import { getCustomRepository } from 'typeorm'
 import Appointment from '../models/Appointment'
 import AppointmentsRepository from '../repositories/AppointmentsRepository'
+import AppError from '../errors/AppError'
 
 interface AppointmentDTO {
   id: string
@@ -12,7 +13,7 @@ class DeleteAppointmentServices {
     const findAppointments = await appointmentsRepository.findById(id)
 
     if (!findAppointments) {
-      throw Error('This id is invalid')
+      throw new AppError('This id is invalid')
     }
 
     const appointmentTemp = {
