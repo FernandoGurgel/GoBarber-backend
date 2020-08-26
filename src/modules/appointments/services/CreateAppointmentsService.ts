@@ -1,8 +1,8 @@
 import { getCustomRepository } from 'typeorm'
-import Appointment from '../models/Appointment'
+import Appointment from '@modules/appointments/infra/typeorm/entities/Appointment'
 import { startOfHour } from 'date-fns'
-import AppointmentsRepository from '../repositories/AppointmentsRepository'
-import AppError from '../errors/AppError'
+import AppointmentsRepository from '@modules/appointments/repositories/AppointmentsRepository'
+import AppError from '@shared/errors/AppError'
 
 interface AppointmentDTO {
   provider_id: string
